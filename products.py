@@ -1,13 +1,24 @@
-# 讀取檔案
+import os #讀取作業系統
+
+# 讀取檔案並檢查是否存在
 products = []
 print('輸入q為離開')
-with open('product.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue #繼續,跳到下一迴圈
-		name, price = line.strip().split(',') 
-		products.append([name, price])
-print(products)
+if os.path.isfile('product.csv'):
+	print('讀取成功')
+	with open('product.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue #繼續,跳到下一迴圈
+			name, price = line.strip().split(',') 
+			products.append([name, price])
+	print(products)
+else:
+	print('找不到檔案')
+
+
+
+
+
 #strip去除換行,split切割 #切割完後直接存成name跟price
 
 #讓使用者輸入
