@@ -15,3 +15,7 @@ print(products)
 print(products[0][1]) #意思為進去products[0]取[1]資料
 for product in products:
 	print(product[0], '的價格是', product[1])
+with open('product.csv', 'w', encoding='utf-8') as f:
+	f.write('商品,價格\n')
+	for p in products:
+		f.write(p[0] + ',' + p[1] + '\n')
